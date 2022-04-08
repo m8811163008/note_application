@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:note_application/notes_cubit.dart';
+import 'package:note_application/cubit/notes_cubit.dart';
+import 'package:note_application/model/note.dart';
 
 void main() {
   group('Notes cubit', () {

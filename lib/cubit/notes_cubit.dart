@@ -1,26 +1,9 @@
 import 'dart:collection';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// lib/ model/ note.dart
-class Note extends Equatable {
-  final int id;
-  final String title;
-  final String body;
-
-  Note(this.id, this.title, this.body);
-
-  //for Equatable
-  @override
-  List<Object> get props => [id, title, body];
-}
-
-// lib/cubit/notes_cubit
-class NotesState {
-  final UnmodifiableListView notes;
-  NotesState(this.notes);
-}
+import '../model/note.dart';
+import 'notes_states.dart';
 
 class NotesCubit extends Cubit<NotesState> {
   List _notes = [];
