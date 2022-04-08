@@ -30,10 +30,27 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => _goToNotePage(context),
         tooltip: 'Add',
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  _goToNotePage(BuildContext context) => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => NotePage(notesCubit: notesCubit),
+        ),
+      );
+}
+
+class NotePage extends StatelessWidget {
+  final NotesCubit notesCubit;
+  const NotePage({Key? key, required this.notesCubit}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
