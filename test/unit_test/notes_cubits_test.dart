@@ -9,7 +9,7 @@ void main() {
 
     test('add notes', () {
       var title = 'title';
-      var body = 'body';
+      var body = 'body ';
       var cubit = NotesCubit();
       cubit.createNote(title, body);
       expect(cubit.state.notes.length, 1);
