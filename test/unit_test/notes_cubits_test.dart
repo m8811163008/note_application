@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:note_application/notes_cubit.dart';
 
 void main() {
   group('Notes cubit', () {
@@ -21,7 +22,7 @@ void main() {
       cubit.createNote('title', 'body');
       cubit.createNote('another title', 'another body');
       cubit.deleteNote(1);
-      expect(cubit.state.notes.lenght, 1);
+      expect(cubit.state.notes.length, 1);
       expect(cubit.state.notes.first.id, 2);
     });
 
@@ -33,9 +34,9 @@ void main() {
 
       var newTitle = 'my cool note';
       var newBody = 'my cool note body';
-      cubit.update(2, newTitle, newBody);
-      expect(cubit.state.notes.lenght, 3);
-      expect(cubit.state.notes[10], Note(2, newTitle, newBody));
+      cubit.updateNote(2, newTitle, newBody);
+      expect(cubit.state.notes.length, 3);
+      expect(cubit.state.notes[1], Note(2, newTitle, newBody));
     });
   });
 }
