@@ -28,7 +28,14 @@ class _NotePageState extends State<NotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: widget.note != null ? _deleteNote : null,
+            icon: const Icon(Icons.delete),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -78,6 +85,7 @@ class _NotePageState extends State<NotePage> {
   }
 
   _deleteNote() {
-    widget.notesCubit.deleteNote(widget.note.id);
+    widget.notesCubit.deleteNote(widget.note!.id);
+    Navigator.pop(context);
   }
 }
