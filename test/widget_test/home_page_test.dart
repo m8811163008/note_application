@@ -49,5 +49,14 @@ void main() {
       expect(find.byType(ListTile), findsOneWidget);
       expect(find.text(expectedTitle), findsNothing);
     });
+
+    //test add note page
+    testWidgets('navigate to new page', (WidgetTester tester) async {
+      var notesCubit = NotesCubit();
+      await _pumpTestWidget(tester, notesCubit);
+      await tester.tap(find.byType(FloatingActionButton));
+      await tester.pumpAndSettle();
+      expect(find.byType(NotePage), findsOneWidget);
+    });
   });
 }
