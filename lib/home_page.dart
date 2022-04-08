@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_application/cubit/notes_cubit.dart';
 import 'package:note_application/cubit/notes_states.dart';
 
+import 'note_page.dart';
+
 class HomePage extends StatelessWidget {
   final NotesCubit notesCubit;
   final String title;
@@ -43,14 +45,4 @@ class HomePage extends StatelessWidget {
           builder: (context) => NotePage(notesCubit: notesCubit),
         ),
       );
-}
-
-class NotePage extends StatelessWidget {
-  final NotesCubit notesCubit;
-  const NotePage({Key? key, required this.notesCubit}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
 }
