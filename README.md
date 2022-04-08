@@ -1,16 +1,11 @@
-# note_application
+# Exploring Test Drive Development with Flutter
 
-test-driven development (TDD) with Flutter
+This project demonstrates step by step the cycle of TDD and how to use it
+into a Flutter application.
 
-## Getting Started
+Following the commits, you can walk through the development of a very simple note
+taking app using TDD principles.
 
-This project is a starting point for a Flutter application.
+The cycle Test fails -> Test passes -> refactor is tagged by [Failing], [Ok] and [Refactor] in the commit message.
+To order a flutter software call me (+989212805230 Milad Hesami)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
