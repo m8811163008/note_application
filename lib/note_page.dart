@@ -68,12 +68,16 @@ class _NotePageState extends State<NotePage> {
 
   _finishEditing() {
     if (widget.note != null) {
-      widget.notesCubit
-          .updateNote(widget.note!.id, _titleController.text, _bodyController.text);
+      widget.notesCubit.updateNote(
+          widget.note!.id, _titleController.text, _bodyController.text);
     } else {
       widget.notesCubit.createNote(_titleController.text, _bodyController.text);
     }
 
     Navigator.pop(context);
+  }
+
+  _deleteNote() {
+    widget.notesCubit.deleteNote(widget.note.id);
   }
 }

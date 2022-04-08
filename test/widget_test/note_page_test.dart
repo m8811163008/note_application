@@ -14,6 +14,17 @@ void main() {
             home: NotePage(notesCubit: cubit, note: note),
           ),
         );
+    testWidgets(
+      'empty state',
+      ((WidgetTester tester) async {
+        await _pumpTestWidget(tester, NotesCubit());
+        expect(find.text('Enter your text here...'), findsOneWidget);
+        expect(find.text('Title'), findsOneWidget);
+        var widgetFinder = find.widgetWithIcon(IconButton, Icons.delete);
+        var deleteButton = widgetFinder.evaluate().single.widget as IconButton;
+        expect(deleteButton.onPressed, isNull);
+      }),
+    );
 
     testWidgets('create note', (WidgetTester tester) async {
       var cubit = NotesCubit();
@@ -28,11 +39,15 @@ void main() {
       expect(note.body, 'there');
       expect(find.byType(NotePage), findsNothing);
     });
+
     testWidgets('create in edit mode', (WidgetTester tester) async {
       var note = Note(1, 'my note', 'note body');
       await _pumpTestWidget(tester, NotesCubit(), note: note);
       expect(find.text(note.title), findsOneWidget);
       expect(find.text(note.body), findsOneWidget);
+      var widgetFinder = find.widgetWithIcon(IconButton, Icons.delete);
+      var deleteButton = widgetFinder.evaluate().single.widget as IconButton;
+      expect(deleteButton.onPressed, isNotNull);
     });
 
     testWidgets('edit note', (WidgetTester tester) async {
@@ -46,6 +61,15 @@ void main() {
       var note = cubit.state.notes.first;
       expect(note.title, 'hi');
       expect(note.body, 'there');
+      expect(find.byType(NotePage), findsNothing);
+    });
+
+    testWidgets('delete note', (WidgetTester tester) async {
+      var cubit = NotesCubit()..createNote('my note', 'note body');
+      await _pumpTestWidget(tester, cubit, note: cubit.state.notes.first);
+      await tester.tap(find.byType(IconButton));
+      await tester.pumpAndSettle();
+      expect(cubit.state.notes, isEmpty);
       expect(find.byType(NotePage), findsNothing);
     });
   });
